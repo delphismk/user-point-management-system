@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "github.com/delphismk/user-point-management-system/pkg/pb";
+
+service UserService {
+    rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {}
+    rpc AddPoints(AddPointsRequest) returns (AddPointsResponse) {}
+    rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
+}
+
+message CreateUserRequest{
+    string user_name = 1;
+}
+
+message CreateUserResponse {
+    string user_id = 1;
+    string user_name = 2;
+    int32 user_points = 3;
+}
+
+message AddPointsRequest {
+    string user_id = 1;
+    int32 add_points = 2;
+}
+
+message AddPointsResponse {
+    string user_id = 1;
+    int32 user_points = 2;
+}
+
+message GetUserRequest {
+    string user_id = 1;
+}
+
+message GetUserResponse {
+    string user_id = 1;
+    string user_name = 2;
+    int32 user_points = 3;
+}
