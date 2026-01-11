@@ -2,7 +2,8 @@ package usecase
 
 import (
 	"context"
-	domain "user-point-management-system/internal/domain"
+
+	domain "github.com/delphismk/user-point-management-system/internal/domain"
 
 	"github.com/google/uuid"
 )
@@ -55,8 +56,9 @@ func (uc *UserUsecase) AddPoints(ctx context.Context, inputDTO AddPointInputDTO)
 	// // TODO: Addpointsのビジネスロジックの実装(負はダメとかいくつ以上はダメとか？)
 	// user.Points += inputDTO.AddPoints
 
-	//AddPoint処理
-	//inputDTOのAddPointsを本メソッド内でインスタンス化したdomainのUser.Pointsへ加算
+	// AddPoint処理
+	// domainModelのAddPointsメソッドを呼び出してmodelに閉じるビジネスロジックで加算処理(validationもmodel内で実施)
+	// inputDTOのAddPointsを本メソッド内でインスタンス化したdomainのUser.Pointsへ加算
 	if err := user.AddPoints(inputDTO.AddPoints); err != nil {
 		return nil, err
 	}
