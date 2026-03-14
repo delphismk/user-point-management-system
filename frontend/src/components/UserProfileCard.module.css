@@ -1,0 +1,23 @@
+.card {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fafafa;
+  margin-top: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+  color: #333;
+  border-bottom: 2px solid #0366d6;
+  padding-bottom: 4px;
+}
+
+.row {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #555;
+}

@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #f8f9fa;
+  border-right: 1px solid #e9ecef;
+  padding: 24px 16px;
+}
+
+.title {
+  font-size: 1.2rem;
+  margin-bottom: 24px;
+  color: #333;
+}
+
+.menuList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.link {
+  text-decoration: none;
+  color: #0366d6;
+  font-weight: bold;
+  display: block;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.link:hover {
+  background-color: #e1e4e8;
+  text-decoration: underline;
+}
+
+.main {
+  flex: 1;
+  padding: 32px;
+  background-color: #ffffff;
+}

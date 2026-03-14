@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net"
 
 	infrastructure_db "github.com/delphismk/user-point-management-system/internal/infrastructure/db"
@@ -49,7 +50,7 @@ func main() {
 	}
 
 	// gRPCサーバーの起動
-	println("gRPCServer is running on port %s", ":50051")
+	fmt.Printf("gRPCServer is running on port %s", ":50051")
 	if err := s.Serve(lis); err != nil {
 		panic("failed to serve: " + err.Error())
 	}
