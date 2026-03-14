@@ -14,7 +14,7 @@ export default function Layout() {
         </ul>
       </nav>
 
-      {/* 右側のメインコンテンツ（ここが各ページの中身に切り替わる） */}
+      {/* 右側のメインコンテンツ */}
       <main className={styles.main}>
         <Outlet />
       </main>
