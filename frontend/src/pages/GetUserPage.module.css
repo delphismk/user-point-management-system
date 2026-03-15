@@ -1,0 +1,26 @@
+.pageTitle {
+  border-bottom: 2px solid #eee;
+  padding-bottom: 8px;
+  margin-top: 0;
+  color: #333;
+}
+
+.searchButton {
+  padding: 10px 24px;
+  background-color: #17a2b8; /* 検索っぽい落ち着いたブルー系 */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+}
+
+.searchButton:disabled {
+  background-color: #92d3df;
+  cursor: wait;
+}
+
+.cardWrapper {
+  margin-top: 24px;
+}

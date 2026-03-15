@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { apiClient } from "../api/client";
-import type { User } from "../types";
+import useCreateUser from "../hooks/useCreateUser";
 
 import UserProfileCard from "../components/UserProfileCard";
 import ErrorMessage from "../components/ErrorMessage";
@@ -8,51 +6,34 @@ import InputForm from "../components/InputForm";
 import styles from "./CreateUserPage.module.css"; 
 
 export default function CreateUserPage() {
-  const [userName, setUserName] = useState<string>("");
-  const [createdUser, setCreatedUser] = useState<User | null>(null);
-  const [error, setError] = useState<string>("");
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+    const {
+        userName,
+        setUserName,
+        createdUser,
+        error,
+        isLoading,
+        handleCreate,
+    } = useCreateUser();
 
-  const handleCreate = async () => {
-    if (!userName.trim()) {
-      setError("ユーザー名を入力してください");
-      return;
-    }
+    return (
+        <div>
+        <h2 className={styles.pageTitle}>1. ユーザ登録</h2>
 
-    setError("");
-    setIsLoading(true);
+        <InputForm
+            value={userName}
+            placeholder="ユーザー名を入力"
+            buttonText="作成する"
+            loadingText="作成中..."
+            isLoading={isLoading}
+            onChange={setUserName} // 文字入力でhooks(setUserName)が走る
+            onSubmit={handleCreate} // ボタンが押されたらhooks(handleCreate)が走る
+        />
 
-    try {
-      const user = await apiClient.createUser(userName);
-      setCreatedUser(user);
-      setUserName(""); 
-    } catch (err: any) {
-      setError(err.message);
-      setCreatedUser(null);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+        <ErrorMessage message={error} />
 
-  return (
-    <div>
-      <h2 className={styles.pageTitle}>1. ユーザ登録</h2>
-
-      <InputForm
-        value={userName}
-        placeholder="ユーザー名を入力"
-        buttonText="作成する"
-        loadingText="作成中..."
-        isLoading={isLoading}
-        onChange={setUserName}
-        onSubmit={handleCreate}
-      />
-
-      <ErrorMessage message={error} />
-
-      <div className={styles.cardWrapper}>
-        <UserProfileCard user={createdUser} />
-      </div>
-    </div>
-  );
+        <div className={styles.cardWrapper}>
+            <UserProfileCard user={createdUser} />
+        </div>
+        </div>
+    );
 }
