@@ -1,31 +1,48 @@
 - App
-    - app.tsx
+    - main.tsx
+        - エントリーポイント
+    - app.tsx：ルーティングの担当
         - routing
-    - components
+    - types
+        - データの型定義
+    - components：1つの画面要素を作る
         - props受け取り+表示の関数(tsx)
         - アニメーション(css)
-    - Pages
-        - State(useState)
-        - hooks(useEffect等)
-        - api
+    - api: bkとの通信、道具の受け取り
+        - 通信処理とそのハンドリング等
+    - hooks：画面のロジック(遷移・効果)の切り出し
+        - API呼び出しや状態管理ロジック担当(useState, useEffect等)
+    - Pages：1画面を作る
+        - hooks呼び出し
         - component組立
-    - styles
-        - 各componentsに対応するアニメーションcss
-
 
 src/
 ├── api/
-│   └── client.ts                  // API通信処理（Protoベース）
+│   ├── client.ts
+│   └── question.txt
+├── App.tsx
 ├── components/
-│   ├── Layout.tsx                 // 左サイドバーと右メインコンテンツの大枠
-│   ├── Layout.module.css          // Layout用のスタイル
-│   ├── UserProfileCard.tsx        // ユーザ情報表示UI
-│   └── UserProfileCard.module.css // Card用のスタイル
+│   ├── ErrorMessage.tsx
+│   ├── ErrorMessage.module.css
+│   ├── InputForm.tsx
+│   ├── InputForm.module.css
+│   ├── LabeledInput.tsx
+│   ├── LabeledInput.module.css
+│   ├── Layout.tsx
+│   ├── Layout.module.css
+│   ├── UserProfileCard.tsx
+│   └── UserProfileCard.module.css
+├── hooks/
+│   ├── useAddPoints.ts
+│   ├── useCreateUser.ts
+│   └── useGetUser.ts
+├── main.tsx
 ├── pages/
-│   ├── CreateUserPage.tsx         // 1. ユーザ登録画面
-│   ├── AddPointsPage.tsx          // 2. ポイント加算画面
-│   └── GetUserPage.tsx            // 3. ユーザ情報確認画面
-├── types/
-│   └── index.ts                   // Protoベースの型定義（完了✨）
-├── App.tsx                        // ルーター設定
-└── main.tsx
+│   ├── AddPointsPage.tsx
+│   ├── AddPointsPage.module.css
+│   ├── CreateUserPage.tsx
+│   ├── CreateUserPage.module.css
+│   ├── GetUserPage.tsx
+│   └── GetUserPage.module.css
+└── types/
+    └── index.ts
